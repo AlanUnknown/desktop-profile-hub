@@ -69,7 +69,7 @@ const Window: React.FC<WindowProps> = ({
   return (
     <div
       ref={windowRef}
-      className="window fixed animate-window-open"
+      className="window fixed"
       style={{
         left: position.x,
         top: position.y,
@@ -79,26 +79,22 @@ const Window: React.FC<WindowProps> = ({
       }}
       onMouseDown={onFocus}
     >
-      {/* Title Bar */}
+      {/* XP Title Bar */}
       <div 
         className="window-titlebar cursor-move"
         onMouseDown={handleMouseDown}
       >
-        <span className="text-sm font-medium text-foreground/80 truncate pr-4">
+        <span className="window-title truncate pr-2 pl-1">
           {title}
         </span>
-        <div className="window-controls flex items-center -mr-1">
-          <button className="w-11 h-8 flex items-center justify-center hover:bg-secondary/80 rounded transition-colors">
-            <Minus size={16} className="text-foreground/60" />
-          </button>
-          <button className="w-11 h-8 flex items-center justify-center hover:bg-secondary/80 rounded transition-colors">
-            <Square size={12} className="text-foreground/60" />
-          </button>
+        <div className="window-controls flex items-center gap-0.5 mr-1">
+          <button className="window-btn">_</button>
+          <button className="window-btn">□</button>
           <button 
-            className="window-close-btn"
+            className="window-btn window-close-btn"
             onClick={onClose}
           >
-            <X size={16} />
+            ✕
           </button>
         </div>
       </div>
