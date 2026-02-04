@@ -57,10 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Windows-specific colors
-        windows: {
-          blue: "hsl(206 100% 42%)",
-          "light-blue": "hsl(206 100% 50%)",
+        // Windows XP-specific colors
+        xp: {
+          blue: "hsl(213 72% 44%)",
+          "light-blue": "hsl(213 80% 55%)",
+          green: "hsl(120 55% 42%)",
+          "title-blue": "hsl(213 80% 50%)",
         },
       },
       borderRadius: {
