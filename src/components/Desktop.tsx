@@ -121,7 +121,7 @@ const Desktop: React.FC = () => {
       ))}
 
       {/* Taskbar */}
-      <Taskbar />
+      <Taskbar onOpenWindow={(id) => openWindow(id as IconType)} />
     </div>
   );
 };
