@@ -6,10 +6,11 @@ import {
   Settings, 
   Presentation, 
   Mail, 
-  FileText 
+  FileText,
+  Bomb
 } from 'lucide-react';
 
-export type IconType = 'about' | 'education' | 'experience' | 'skills' | 'projects' | 'contact' | 'fullprofile';
+export type IconType = 'about' | 'education' | 'experience' | 'skills' | 'projects' | 'contact' | 'fullprofile' | 'minesweeper';
 
 interface DesktopIconProps {
   id: IconType;
@@ -25,6 +26,7 @@ const iconConfig: Record<IconType, { icon: React.ElementType; color: string }> =
   projects: { icon: Presentation, color: '#C43E1C' },
   contact: { icon: Mail, color: '#0078D4' },
   fullprofile: { icon: FileText, color: '#2B579A' },
+  minesweeper: { icon: Bomb, color: '#808080' },
 };
 
 const DesktopIcon: React.FC<DesktopIconProps> = ({ id, label, onDoubleClick }) => {

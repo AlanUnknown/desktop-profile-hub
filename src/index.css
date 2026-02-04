@@ -416,6 +416,111 @@
   .word-document li {
     @apply mb-1;
   }
+
+  /* Minesweeper styles */
+  .minesweeper-game {
+    @apply flex flex-col h-full;
+    background: hsl(var(--muted));
+  }
+
+  .minesweeper-menu {
+    @apply flex gap-4 px-2 py-0.5 text-xs;
+    background: hsl(var(--card));
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .minesweeper-menu-item {
+    @apply cursor-pointer;
+    color: hsl(var(--foreground));
+  }
+
+  .minesweeper-menu-item:hover {
+    text-decoration: underline;
+  }
+
+  .minesweeper-container {
+    @apply p-2;
+  }
+
+  .minesweeper-status {
+    @apply flex items-center justify-between p-1 mb-2;
+    background: hsl(var(--muted));
+    border: 2px solid;
+    border-color: hsl(0 0% 40%) hsl(0 0% 100%) hsl(0 0% 100%) hsl(0 0% 40%);
+  }
+
+  .minesweeper-counter {
+    @apply font-mono text-xl font-bold px-1;
+    background: hsl(0 0% 5%);
+    color: hsl(0 100% 50%);
+    min-width: 50px;
+    text-align: center;
+    border: 1px solid;
+    border-color: hsl(0 0% 30%) hsl(0 0% 70%) hsl(0 0% 70%) hsl(0 0% 30%);
+  }
+
+  .minesweeper-face {
+    @apply text-xl p-1 cursor-pointer;
+    background: hsl(var(--muted));
+    border: 2px solid;
+    border-color: hsl(0 0% 100%) hsl(0 0% 40%) hsl(0 0% 40%) hsl(0 0% 100%);
+  }
+
+  .minesweeper-face:active {
+    border-color: hsl(0 0% 40%) hsl(0 0% 100%) hsl(0 0% 100%) hsl(0 0% 40%);
+  }
+
+  .minesweeper-grid {
+    @apply inline-block;
+    border: 3px solid;
+    border-color: hsl(0 0% 40%) hsl(0 0% 100%) hsl(0 0% 100%) hsl(0 0% 40%);
+  }
+
+  .minesweeper-cell {
+    @apply w-6 h-6 flex items-center justify-center text-xs;
+    background: hsl(var(--muted));
+    border: 2px solid;
+    border-color: hsl(0 0% 100%) hsl(0 0% 40%) hsl(0 0% 40%) hsl(0 0% 100%);
+  }
+
+  .minesweeper-cell:active:not(.revealed) {
+    border-color: hsl(0 0% 50%);
+    background: hsl(var(--secondary));
+  }
+
+  .minesweeper-cell.revealed {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(0 0% 50%);
+  }
+
+  .minesweeper-cell.mine {
+    background: hsl(0 70% 60%);
+  }
+
+  .minesweeper-overlay {
+    @apply absolute inset-0 flex items-center justify-center;
+    background: hsl(0 0% 0% / 0.5);
+  }
+
+  .minesweeper-message {
+    @apply flex flex-col items-center gap-3 p-6 rounded text-lg font-bold;
+    background: hsl(var(--card));
+    border: 2px solid;
+    border-color: hsl(0 0% 100%) hsl(0 0% 40%) hsl(0 0% 40%) hsl(0 0% 100%);
+    color: hsl(var(--foreground));
+  }
+
+  .minesweeper-restart {
+    @apply px-4 py-1 text-sm;
+    background: hsl(var(--muted));
+    border: 2px solid;
+    border-color: hsl(0 0% 100%) hsl(0 0% 40%) hsl(0 0% 40%) hsl(0 0% 100%);
+    color: hsl(var(--foreground));
+  }
+
+  .minesweeper-restart:hover {
+    background: hsl(var(--secondary));
+  }
 }
 
 @layer utilities {

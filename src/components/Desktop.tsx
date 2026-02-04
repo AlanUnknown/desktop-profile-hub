@@ -9,6 +9,7 @@ import SkillsContent from './windows/SkillsContent';
 import ProjectsContent from './windows/ProjectsContent';
 import ContactContent from './windows/ContactContent';
 import FullProfileContent from './windows/FullProfileContent';
+import MinesweeperContent from './windows/MinesweeperContent';
 
 interface WindowState {
   id: IconType;
@@ -26,6 +27,7 @@ const desktopIcons: { id: IconType; label: string }[] = [
   { id: 'projects', label: 'Projects.ppt' },
   { id: 'contact', label: 'Contact.mail' },
   { id: 'fullprofile', label: 'Full_Profile.docx' },
+  { id: 'minesweeper', label: 'Minesweeper' },
 ];
 
 const windowConfigs: Record<IconType, Omit<WindowState, 'id'>> = {
@@ -40,6 +42,11 @@ const windowConfigs: Record<IconType, Omit<WindowState, 'id'>> = {
     position: { x: 120, y: 40 }, 
     size: { width: 850, height: 600 },
     isWordDocument: true 
+  },
+  minesweeper: { 
+    title: 'Minesweeper', 
+    position: { x: 300, y: 100 }, 
+    size: { width: 280, height: 380 }
   },
 };
 
@@ -86,6 +93,7 @@ const Desktop: React.FC = () => {
       case 'projects': return <ProjectsContent />;
       case 'contact': return <ContactContent />;
       case 'fullprofile': return <FullProfileContent />;
+      case 'minesweeper': return <MinesweeperContent />;
     }
   };
 
