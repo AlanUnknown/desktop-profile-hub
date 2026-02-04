@@ -1,14 +1,14 @@
 import React from 'react';
 import { 
-  User, 
-  GraduationCap, 
-  FolderOpen, 
-  Settings, 
-  Presentation, 
-  Mail, 
-  FileText,
-  Bomb
-} from 'lucide-react';
+  XPUserIcon,
+  XPEducationIcon,
+  XPFolderIcon,
+  XPGearIcon,
+  XPPresentationIcon,
+  XPMailIcon,
+  XPWordIcon,
+  XPMinesweeperIcon
+} from './icons/XPIcons';
 
 export type IconType = 'about' | 'education' | 'experience' | 'skills' | 'projects' | 'contact' | 'fullprofile' | 'minesweeper';
 
@@ -18,19 +18,19 @@ interface DesktopIconProps {
   onDoubleClick: () => void;
 }
 
-const iconConfig: Record<IconType, { icon: React.ElementType; color: string }> = {
-  about: { icon: User, color: '#0078D4' },
-  education: { icon: GraduationCap, color: '#2B579A' },
-  experience: { icon: FolderOpen, color: '#E5B800' },
-  skills: { icon: Settings, color: '#505050' },
-  projects: { icon: Presentation, color: '#C43E1C' },
-  contact: { icon: Mail, color: '#0078D4' },
-  fullprofile: { icon: FileText, color: '#2B579A' },
-  minesweeper: { icon: Bomb, color: '#808080' },
+const iconConfig: Record<IconType, React.FC<{ size?: number; className?: string }>> = {
+  about: XPUserIcon,
+  education: XPEducationIcon,
+  experience: XPFolderIcon,
+  skills: XPGearIcon,
+  projects: XPPresentationIcon,
+  contact: XPMailIcon,
+  fullprofile: XPWordIcon,
+  minesweeper: XPMinesweeperIcon,
 };
 
 const DesktopIcon: React.FC<DesktopIconProps> = ({ id, label, onDoubleClick }) => {
-  const { icon: Icon, color } = iconConfig[id];
+  const Icon = iconConfig[id];
 
   return (
     <div 
@@ -38,7 +38,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, label, onDoubleClick }) =
       onDoubleClick={onDoubleClick}
     >
       <div className="desktop-icon-image">
-        <Icon size={40} color={color} strokeWidth={1.5} />
+        <Icon size={40} />
       </div>
       <span className="desktop-icon-label">{label}</span>
     </div>
