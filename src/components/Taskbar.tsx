@@ -3,9 +3,10 @@ import { User, LogOut, HelpCircle, Settings, FolderOpen } from 'lucide-react';
 
 interface TaskbarProps {
   onOpenWindow?: (windowId: string) => void;
+  onLogOff?: () => void;
 }
 
-const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow }) => {
+const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
   const [time, setTime] = useState(new Date());
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const startMenuRef = useRef<HTMLDivElement>(null);
@@ -134,7 +135,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow }) => {
 
             {/* Footer */}
             <div className="start-menu-footer">
-              <button className="start-menu-footer-btn">
+              <button className="start-menu-footer-btn" onClick={() => { setIsStartMenuOpen(false); onLogOff?.(); }}>
                 <LogOut size={20} />
                 <span>Log Off</span>
               </button>

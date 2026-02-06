@@ -50,7 +50,11 @@ const windowConfigs: Record<IconType, Omit<WindowState, 'id'>> = {
   },
 };
 
-const Desktop: React.FC = () => {
+interface DesktopProps {
+  onLogOff?: () => void;
+}
+
+const Desktop: React.FC<DesktopProps> = ({ onLogOff }) => {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
   const [windowOrder, setWindowOrder] = useState<IconType[]>([]);
 
@@ -129,7 +133,7 @@ const Desktop: React.FC = () => {
       ))}
 
       {/* Taskbar */}
-      <Taskbar onOpenWindow={(id) => openWindow(id as IconType)} />
+      <Taskbar onOpenWindow={(id) => openWindow(id as IconType)} onLogOff={onLogOff} />
     </div>
   );
 };
