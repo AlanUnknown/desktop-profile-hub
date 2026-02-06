@@ -9,8 +9,8 @@ const AboutContent: React.FC = () => {
           <User size={40} className="text-primary-foreground" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-foreground">[Your Name]</h1>
-          <p className="text-muted-foreground">[Your Title / Tagline]</p>
+          <h1 className="text-2xl font-bold text-foreground">Alan Suresh</h1>
+          <p className="text-muted-foreground">HR Professional | HRM Postgraduate</p>
         </div>
       </div>
 
@@ -18,24 +18,26 @@ const AboutContent: React.FC = () => {
         <section>
           <h2 className="text-lg font-semibold text-foreground mb-2">About Me</h2>
           <p className="text-muted-foreground leading-relaxed">
-            [Write a brief professional introduction here. Share your vision, what drives you, 
-            and what you're passionate about. This is your elevator pitch — make it memorable!]
+            Budding Human Resource Management postgraduate with hands-on exposure to corporate HR operations, 
+            CSR-linked people initiatives, and academic–industry collaboration. Known for leadership involvement, 
+            strong communication skills, and the ability to bridge institutions with corporate teams in structured 
+            professional environments.
           </p>
         </section>
 
         <section>
           <h2 className="text-lg font-semibold text-foreground mb-2">What I Do</h2>
           <p className="text-muted-foreground leading-relaxed">
-            [Describe your primary focus areas, expertise, and the value you bring. 
-            What problems do you solve? What makes your approach unique?]
+            Experienced in employee engagement support, HR documentation, and large-scale event execution. 
+            I bring value through stakeholder coordination, training support, and CSR & industry–academia collaboration.
           </p>
         </section>
 
         <section>
           <h2 className="text-lg font-semibold text-foreground mb-2">Interests & Direction</h2>
           <p className="text-muted-foreground leading-relaxed">
-            [Share your professional interests and where you see yourself heading. 
-            What are you currently learning or exploring?]
+            Actively involved in Toastmasters, JCI, and NIPM. Passionate about people management, 
+            professional development, and exploring how AI tools can enhance HR operations.
           </p>
         </section>
       </div>

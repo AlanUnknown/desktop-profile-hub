@@ -51,7 +51,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
               <User size={36} className="text-white" />
             </div>
             <div className="login-profile-info">
-              <span className="login-profile-name">[Your Name]</span>
+              <span className="login-profile-name">Alan Suresh</span>
               {isLoading && (
                 <span className="login-loading-text">Loading your personal settings...</span>
               )}
