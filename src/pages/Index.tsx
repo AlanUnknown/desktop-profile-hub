@@ -9,7 +9,7 @@ const Index = () => {
     return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
   }
 
-  return <Desktop />;
+  return <Desktop onLogOff={() => setIsLoggedIn(false)} />;
 };
 
 export default Index;
