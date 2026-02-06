@@ -10,9 +10,8 @@ const ContactContent: React.FC = () => {
       </div>
 
       <div className="space-y-4">
-        {/* Email */}
         <a 
-          href="mailto:your.email@example.com"
+          href="mailto:alansuresh83@gmail.com"
           className="flex items-center gap-4 p-4 bg-secondary/30 rounded-lg hover:bg-secondary/50 transition-colors group"
         >
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -21,14 +20,13 @@ const ContactContent: React.FC = () => {
           <div>
             <h3 className="font-semibold text-foreground">Email</h3>
             <p className="text-muted-foreground group-hover:text-primary transition-colors">
-              [your.email@example.com]
+              alansuresh83@gmail.com
             </p>
           </div>
         </a>
 
-        {/* LinkedIn */}
         <a 
-          href="https://linkedin.com/in/yourprofile"
+          href="https://linkedin.com/in/alan-suresh-7a158518a"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 p-4 bg-secondary/30 rounded-lg hover:bg-secondary/50 transition-colors group"
@@ -39,34 +37,31 @@ const ContactContent: React.FC = () => {
           <div>
             <h3 className="font-semibold text-foreground">LinkedIn</h3>
             <p className="text-muted-foreground group-hover:text-primary transition-colors">
-              [linkedin.com/in/yourprofile]
+              linkedin.com/in/alan-suresh-7a158518a
             </p>
           </div>
         </a>
 
-        {/* Phone (Optional) */}
         <div className="flex items-center gap-4 p-4 bg-secondary/30 rounded-lg">
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
             <Phone size={24} className="text-primary" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">Phone</h3>
-            <p className="text-muted-foreground">[+1 (123) 456-7890]</p>
+            <p className="text-muted-foreground">+91 9074694074</p>
           </div>
         </div>
 
-        {/* Location */}
         <div className="flex items-center gap-4 p-4 bg-secondary/30 rounded-lg">
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
             <MapPin size={24} className="text-primary" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">Location</h3>
-            <p className="text-muted-foreground">[City, Country]</p>
+            <p className="text-muted-foreground">Trivandrum, Kerala, India</p>
           </div>
         </div>
 
-        {/* Download Resume */}
         <button className="w-full flex items-center justify-center gap-3 p-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
           <Download size={20} />
           Download Resume

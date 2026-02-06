@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings, Users, Search, Lightbulb, Monitor } from 'lucide-react';
+import { Settings, Users, Monitor, Lightbulb, Globe } from 'lucide-react';
 
 interface SkillCategoryProps {
   icon: React.ReactNode;
@@ -37,46 +37,50 @@ const SkillsContent: React.FC = () => {
       <div className="space-y-4">
         <SkillCategory
           icon={<Users size={20} className="text-primary" />}
-          title="HR Skills"
+          title="HR & Professional"
           skills={[
-            '[Skill 1]',
-            '[Skill 2]',
-            '[Skill 3]',
-            '[Add more]',
-          ]}
-        />
-
-        <SkillCategory
-          icon={<Search size={20} className="text-primary" />}
-          title="Research Tools"
-          skills={[
-            '[Tool 1]',
-            '[Tool 2]',
-            '[Tool 3]',
-            '[Add more]',
-          ]}
-        />
-
-        <SkillCategory
-          icon={<Lightbulb size={20} className="text-primary" />}
-          title="Soft Skills"
-          skills={[
-            '[Communication]',
-            '[Leadership]',
-            '[Problem Solving]',
-            '[Add more]',
+            'HR Operations',
+            'Employee Engagement',
+            'CSR & Industry–Academia Collaboration',
+            'Stakeholder Coordination',
+            'Training Support',
+            'HR Documentation',
           ]}
         />
 
         <SkillCategory
           icon={<Monitor size={20} className="text-primary" />}
-          title="Digital & Technical Skills"
+          title="Technical"
           skills={[
-            '[Software 1]',
-            '[Technology 1]',
-            '[Platform 1]',
-            '[Add more]',
+            'MS Word',
+            'Excel',
+            'PowerPoint',
+            'Canva',
+            'Adobe Suite',
+            'Python',
+            'Claude',
+            'Lovable',
+            'Gemini',
+            'ChatGPT',
           ]}
+        />
+
+        <SkillCategory
+          icon={<Lightbulb size={20} className="text-primary" />}
+          title="Behavioural"
+          skills={[
+            'Communication',
+            'Leadership',
+            'Team Coordination',
+            'Interpersonal Skills',
+            'Professional Discipline',
+          ]}
+        />
+
+        <SkillCategory
+          icon={<Globe size={20} className="text-primary" />}
+          title="Languages"
+          skills={['English', 'Malayalam', 'Hindi']}
         />
       </div>
     </div>

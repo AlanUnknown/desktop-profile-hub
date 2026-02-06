@@ -10,58 +10,54 @@ const EducationContent: React.FC = () => {
       </div>
 
       <div className="space-y-6">
-        {/* Degree Entry */}
         <div className="border-l-2 border-primary pl-4">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="font-semibold text-foreground">[Degree Name]</h3>
-              <p className="text-muted-foreground">[University/Institution Name]</p>
+              <h3 className="font-semibold text-foreground">Master of Arts in Human Resource Management</h3>
+              <p className="text-muted-foreground">Loyola College of Social Sciences (Autonomous), Trivandrum</p>
             </div>
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Calendar size={14} />
-              <span>[Year - Year]</span>
+              <span>2024 – 2026</span>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            [Brief description of your studies, major achievements, or relevant coursework]
-          </p>
         </div>
 
-        {/* Another Degree */}
         <div className="border-l-2 border-secondary pl-4">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="font-semibold text-foreground">[Previous Degree]</h3>
-              <p className="text-muted-foreground">[School/College Name]</p>
+              <h3 className="font-semibold text-foreground">Bachelor of Arts in Literature</h3>
+              <p className="text-muted-foreground">Mother Theresa College, Trivandrum</p>
             </div>
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Calendar size={14} />
-              <span>[Year - Year]</span>
+              <span>2021 – 2023</span>
             </div>
           </div>
         </div>
 
-        {/* Certifications */}
         <div className="mt-8">
           <div className="flex items-center gap-2 mb-4">
             <Award size={20} className="text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">Certifications</h2>
+            <h2 className="text-lg font-semibold text-foreground">Affiliations & Engagements</h2>
           </div>
           
           <ul className="space-y-3">
             <li className="flex items-start gap-2">
               <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
-              <div>
-                <p className="text-foreground">[Certification Name]</p>
-                <p className="text-sm text-muted-foreground">[Issuing Organization] • [Year]</p>
-              </div>
+              <p className="text-foreground">Toastmasters</p>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
-              <div>
-                <p className="text-foreground">[Another Certification]</p>
-                <p className="text-sm text-muted-foreground">[Issuing Organization] • [Year]</p>
-              </div>
+              <p className="text-foreground">Junior Chamber International (JCI)</p>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
+              <p className="text-foreground">National Institute of Personnel Management (NIPM)</p>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
+              <p className="text-foreground">NSS</p>
             </li>
           </ul>
         </div>

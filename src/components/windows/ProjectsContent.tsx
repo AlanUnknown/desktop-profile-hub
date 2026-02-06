@@ -1,5 +1,5 @@
 import React from 'react';
-import { Presentation, Lightbulb, BookOpen, Rocket } from 'lucide-react';
+import { Presentation, Users, Award, Megaphone } from 'lucide-react';
 
 interface ProjectCardProps {
   icon: React.ReactNode;
@@ -28,36 +28,29 @@ const ProjectsContent: React.FC = () => {
     <div className="p-6">
       <div className="flex items-center gap-3 mb-6">
         <Presentation size={28} className="text-primary" />
-        <h1 className="text-xl font-bold text-foreground">Projects</h1>
+        <h1 className="text-xl font-bold text-foreground">Projects & Leadership</h1>
       </div>
 
       <div className="space-y-4">
         <ProjectCard
-          icon={<BookOpen size={20} className="text-primary" />}
-          category="Academic"
-          title="[Project Title]"
-          description="[Brief description of the academic project, its objectives, and your role in it. What did you learn or achieve?]"
+          icon={<Megaphone size={20} className="text-primary" />}
+          category="Event Coordination"
+          title="Business Quiz — LaTarang 6.0"
+          description="Coordinated the business quiz at the Management & Cultural Fest, managing faculty coordination, participant logistics, and smooth event execution."
         />
 
         <ProjectCard
-          icon={<Lightbulb size={20} className="text-primary" />}
-          category="Research"
-          title="[Research Title]"
-          description="[Describe your research work, methodology used, and key findings or contributions.]"
+          icon={<Users size={20} className="text-primary" />}
+          category="CSR Collaboration"
+          title="Bisleri × Loyola CSR Initiative"
+          description="Acted as a coordination bridge between Bisleri's corporate team and Loyola College for CSR collaboration, including hydration sponsorship for an International Seminar."
         />
 
         <ProjectCard
-          icon={<Rocket size={20} className="text-primary" />}
-          category="Startup / Concept"
-          title="[Startup or Concept Name]"
-          description="[Explain your startup idea or concept project. What problem does it solve? What stage is it at?]"
-        />
-
-        <ProjectCard
-          icon={<BookOpen size={20} className="text-primary" />}
-          category="Academic"
-          title="[Another Project]"
-          description="[Description of another significant project you've worked on.]"
+          icon={<Award size={20} className="text-primary" />}
+          category="Academic Leadership"
+          title="Program Committee & Venue Head"
+          description="Actively involved in HR training programs, academic events, and leadership initiatives as Program Committee Coordinator and Venue Head."
         />
       </div>
     </div>

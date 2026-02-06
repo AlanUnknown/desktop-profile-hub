@@ -70,7 +70,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
               <div className="start-menu-avatar">
                 <User size={32} className="text-white" />
               </div>
-              <span className="start-menu-username">[Your Name]</span>
+              <span className="start-menu-username">Alan Suresh</span>
             </div>
 
             {/* Menu Content */}
