@@ -521,6 +521,115 @@
   .minesweeper-restart:hover {
     background: hsl(var(--secondary));
   }
+
+
+  /* XP Login Screen */
+  .login-screen {
+    @apply fixed inset-0 flex flex-col;
+    background: linear-gradient(
+      180deg,
+      hsl(213 60% 20%) 0%,
+      hsl(213 70% 35%) 30%,
+      hsl(213 70% 45%) 60%,
+      hsl(213 60% 30%) 100%
+    );
+    transition: opacity 0.6s ease-out;
+    z-index: 10000;
+  }
+
+  .login-fade-out {
+    opacity: 0;
+  }
+
+  .login-content {
+    @apply flex flex-1 items-center justify-center gap-16 px-12;
+  }
+
+  .login-left {
+    @apply flex flex-col items-center gap-6;
+  }
+
+  .login-logo {
+    @apply flex flex-col items-center gap-3;
+  }
+
+  .login-title {
+    @apply text-4xl font-bold text-white tracking-tight;
+    text-shadow: 2px 2px 4px hsl(0 0% 0% / 0.5);
+    font-family: 'Franklin Gothic Medium', 'Tahoma', sans-serif;
+  }
+
+  .login-title-xp {
+    @apply text-5xl italic ml-1;
+    color: hsl(45 100% 55%);
+  }
+
+  .login-prompt {
+    @apply text-sm text-white/80;
+    text-shadow: 1px 1px 2px hsl(0 0% 0% / 0.5);
+  }
+
+  .login-right {
+    @apply flex flex-col gap-2;
+    min-width: 280px;
+    border-left: 2px solid hsl(0 0% 100% / 0.15);
+    padding-left: 2rem;
+  }
+
+  .login-profile {
+    @apply flex items-center gap-4 p-3 rounded-lg text-left w-full;
+    transition: background 0.15s;
+  }
+
+  .login-profile:hover {
+    background: hsl(0 0% 100% / 0.1);
+  }
+
+  .login-profile-active {
+    background: hsl(0 0% 100% / 0.15) !important;
+  }
+
+  .login-avatar {
+    @apply w-14 h-14 rounded flex items-center justify-center flex-shrink-0;
+    background: linear-gradient(135deg, hsl(210 30% 55%), hsl(210 30% 35%));
+    border: 2px solid hsl(0 0% 100% / 0.4);
+  }
+
+  .login-profile-info {
+    @apply flex flex-col;
+  }
+
+  .login-profile-name {
+    @apply text-lg font-bold text-white;
+    text-shadow: 1px 1px 2px hsl(0 0% 0% / 0.5);
+  }
+
+  .login-loading-text {
+    @apply text-xs text-white/70 mt-0.5;
+  }
+
+  .login-bottom {
+    @apply flex items-center justify-between px-6 py-3;
+    background: linear-gradient(
+      180deg,
+      hsl(213 50% 28%) 0%,
+      hsl(213 50% 22%) 100%
+    );
+    border-top: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  .login-turnoff {
+    @apply flex items-center gap-2 text-xs text-white/80 px-3 py-1.5 rounded;
+    transition: background 0.15s;
+  }
+
+  .login-turnoff:hover {
+    background: hsl(0 0% 100% / 0.1);
+  }
+
+  .login-footer-text {
+    @apply text-xs text-white/50 text-right;
+  }
 }
 
 @layer utilities {
