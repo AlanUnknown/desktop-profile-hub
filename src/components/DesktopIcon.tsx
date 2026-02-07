@@ -35,10 +35,10 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, label, onDoubleClick }) =
   return (
     <div 
       className="desktop-icon"
-      onDoubleClick={onDoubleClick}
+      onClick={onDoubleClick}
     >
       <div className="desktop-icon-image">
-        <Icon size={40} />
+        <Icon size={32} />
       </div>
       <span className="desktop-icon-label">{label}</span>
     </div>
