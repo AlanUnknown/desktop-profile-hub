@@ -579,119 +579,261 @@
   }
 
   /* =====================================================
-     LOGIN SCREEN — XP Welcome Screen
+     LOGIN SCREEN — Pixel-accurate XP Welcome Screen
      ===================================================== */
-  .login-screen {
+
+  /* Root container — fills viewport */
+  .xp-login {
     @apply fixed inset-0 flex flex-col;
-    background: linear-gradient(
-      180deg,
-      #003399 0%,
-      #0055bb 25%,
-      #0066cc 50%,
-      #0055bb 75%,
-      #003399 100%
-    );
-    transition: opacity 0.6s ease-out;
+    background: #5A7EDC;
     z-index: 10000;
+    transition: opacity 0.6s ease-out;
+    font-family: 'Tahoma', 'Microsoft Sans Serif', sans-serif;
+    cursor: default;
   }
 
-  .login-fade-out {
+  .xp-login--fade {
     opacity: 0;
   }
 
-  .login-content {
-    @apply flex flex-1 items-center justify-center gap-16 px-12;
+  /* ── Top Banner — Dark blue with branding ── */
+  .xp-login__top {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 8px 20px;
+    background: linear-gradient(
+      180deg,
+      #0F47A5 0%,
+      #164CB5 20%,
+      #1D5AC8 50%,
+      #1856C0 80%,
+      #1250B8 100%
+    );
+    min-height: 60px;
   }
 
-  .login-left {
-    @apply flex flex-col items-center gap-6;
+  .xp-login__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .login-logo {
-    @apply flex flex-col items-center gap-3;
+  .xp-login__flag {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
   }
 
-  .login-title {
-    @apply text-4xl font-bold text-white tracking-tight;
-    text-shadow: 2px 2px 4px hsl(0 0% 0% / 0.5);
+  .xp-login__brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 1;
+  }
+
+  .xp-login__microsoft {
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+  }
+
+  .xp-login__windows-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+    font-family: 'Franklin Gothic Medium', 'Tahoma', sans-serif;
+    font-style: italic;
+  }
+
+  .xp-login__xp {
+    font-size: 34px;
+    font-weight: 700;
+    font-style: italic;
+    color: #FF9900;
+    margin-left: 3px;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.35);
+  }
+
+  /* ── Gold separator lines ── */
+  .xp-login__separator {
+    height: 3px;
+    background: linear-gradient(
+      180deg,
+      #D4A020 0%,
+      #E8B830 40%,
+      #C89018 100%
+    );
+    flex-shrink: 0;
+  }
+
+  /* ── Middle area — main content ── */
+  .xp-login__middle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+      180deg,
+      #5A7EDC 0%,
+      #4E72D0 15%,
+      #4568C4 30%,
+      #3D5FB8 50%,
+      #3656AE 70%,
+      #2F4EA4 85%,
+      #28469A 100%
+    );
+    padding: 0 40px;
+  }
+
+  .xp-login__welcome {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .xp-login__instruction {
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    letter-spacing: 0;
     font-family: 'Franklin Gothic Medium', 'Tahoma', sans-serif;
   }
 
-  .login-title-xp {
-    @apply text-5xl italic ml-1;
-    color: #ffcc00;
+  .xp-login__users {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 40px;
+    border-left: 1px solid rgba(255,255,255,0.15);
   }
 
-  .login-prompt {
-    @apply text-white/80;
-    font-size: 11px;
-    text-shadow: 1px 1px 2px hsl(0 0% 0% / 0.5);
+  /* ── User tile ── */
+  .xp-login__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px 8px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.1s;
+    width: 100%;
+    max-width: 320px;
+    text-align: left;
   }
 
-  .login-right {
-    @apply flex flex-col gap-2;
-    min-width: 280px;
-    border-left: 2px solid hsl(0 0% 100% / 0.15);
-    padding-left: 2rem;
+  .xp-login__user:hover {
+    background: rgba(255,255,255,0.12);
   }
 
-  .login-profile {
-    @apply flex items-center gap-4 p-3 text-left w-full;
-    border-radius: 4px;
-    transition: background 0.15s;
+  .xp-login__user--active {
+    background: rgba(255,255,255,0.18) !important;
   }
 
-  .login-profile:hover {
-    background: hsl(0 0% 100% / 0.1);
+  .xp-login__avatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.4);
   }
 
-  .login-profile-active {
-    background: hsl(0 0% 100% / 0.15) !important;
+  .xp-login__avatar svg {
+    display: block;
   }
 
-  .login-avatar {
-    @apply w-14 h-14 rounded flex items-center justify-center flex-shrink-0;
-    background: linear-gradient(135deg, #6e9ecf 0%, #3b6ba5 100%);
-    border: 2px solid hsl(0 0% 100% / 0.4);
+  .xp-login__user-info {
+    display: flex;
+    flex-direction: column;
   }
 
-  .login-profile-info {
-    @apply flex flex-col;
+  .xp-login__username {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   }
 
-  .login-profile-name {
-    @apply text-lg font-bold text-white;
-    text-shadow: 1px 1px 2px hsl(0 0% 0% / 0.5);
+  .xp-login__loading {
+    font-size: 9px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
   }
 
-  .login-loading-text {
-    @apply text-white/70 mt-0.5;
-    font-size: 10px;
-  }
-
-  .login-bottom {
-    @apply flex items-center justify-between px-6 py-3;
+  /* ── Bottom bar ── */
+  .xp-login__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 16px;
     background: linear-gradient(
       180deg,
-      #003399 0%,
-      #002266 100%
+      #2E56A8 0%,
+      #264A98 40%,
+      #1E3E88 70%,
+      #183478 100%
     );
-    border-top: 1px solid hsl(0 0% 100% / 0.1);
+    min-height: 40px;
   }
 
-  .login-turnoff {
-    @apply flex items-center gap-2 text-white/80 px-3 py-1.5 rounded;
+  .xp-login__turnoff {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: none;
+    border: none;
+    border-radius: 3px;
+    color: white;
     font-size: 11px;
-    transition: background 0.15s;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    transition: background 0.1s;
   }
 
-  .login-turnoff:hover {
-    background: hsl(0 0% 100% / 0.1);
+  .xp-login__turnoff:hover {
+    background: rgba(255,255,255,0.1);
   }
 
-  .login-footer-text {
-    @apply text-white/50 text-right;
+  .xp-login__power-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(180deg, #4BA845 0%, #3A8835 50%, #2D6D2A 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1E5518;
+  }
+
+  .xp-login__power-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .xp-login__power-icon svg circle {
+    stroke: white;
+    stroke-width: 2;
+  }
+
+  .xp-login__power-icon svg rect {
+    fill: white;
+  }
+
+  .xp-login__bottom-help {
     font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    text-align: right;
+    line-height: 1.4;
   }
 }
 
