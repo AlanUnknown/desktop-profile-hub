@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { User, LogOut, HelpCircle, Settings, FolderOpen } from 'lucide-react';
 
+interface OpenWindowInfo {
+  id: string;
+  title: string;
+  isMinimized?: boolean;
+}
+
 interface TaskbarProps {
   onOpenWindow?: (windowId: string) => void;
   onLogOff?: () => void;
+  openWindows?: OpenWindowInfo[];
 }
 
-const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
+const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff, openWindows = [] }) => {
   const [time, setTime] = useState(new Date());
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const startMenuRef = useRef<HTMLDivElement>(null);
@@ -65,7 +72,6 @@ const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
         {/* Start Menu */}
         {isStartMenuOpen && (
           <div className="start-menu">
-            {/* User Header */}
             <div className="start-menu-header">
               <div className="start-menu-avatar">
                 <User size={32} className="text-white" />
@@ -73,67 +79,40 @@ const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
               <span className="start-menu-username">Alan Suresh</span>
             </div>
 
-            {/* Menu Content */}
             <div className="start-menu-content">
-              {/* Left Column - Pinned Items */}
               <div className="start-menu-left">
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('about')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('about')}>
                   <User size={24} className="text-xp-blue" />
                   <span>About Me</span>
                 </button>
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('projects')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('projects')}>
                   <FolderOpen size={24} className="text-yellow-600" />
                   <span>My Projects</span>
                 </button>
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('fullprofile')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('fullprofile')}>
                   <FolderOpen size={24} className="text-xp-blue" />
                   <span>Full Profile</span>
                 </button>
-                
                 <div className="start-menu-separator" />
-                
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('contact')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('contact')}>
                   <Settings size={24} className="text-gray-600" />
                   <span>Contact</span>
                 </button>
               </div>
 
-              {/* Right Column - Places */}
               <div className="start-menu-right">
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('education')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('education')}>
                   <span>Education</span>
                 </button>
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('experience')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('experience')}>
                   <span>Experience</span>
                 </button>
-                <button 
-                  className="start-menu-item"
-                  onClick={() => handleMenuItemClick('skills')}
-                >
+                <button className="start-menu-item" onClick={() => handleMenuItemClick('skills')}>
                   <span>Skills</span>
                 </button>
               </div>
             </div>
 
-            {/* Footer */}
             <div className="start-menu-footer">
               <button className="start-menu-footer-btn" onClick={() => { setIsStartMenuOpen(false); onLogOff?.(); }}>
                 <LogOut size={20} />
@@ -148,8 +127,19 @@ const Taskbar: React.FC<TaskbarProps> = ({ onOpenWindow, onLogOff }) => {
         )}
       </div>
 
-      {/* Quick Launch area - empty space */}
-      <div className="flex-1" />
+      {/* Taskbar Window Buttons */}
+      <div className="flex items-center gap-0.5 px-1 overflow-hidden flex-1">
+        {openWindows.map(win => (
+          <button
+            key={win.id}
+            className="taskbar-window-btn"
+            style={{ opacity: win.isMinimized ? 0.7 : 1 }}
+            onClick={() => onOpenWindow?.(win.id)}
+          >
+            <span className="truncate">{win.title}</span>
+          </button>
+        ))}
+      </div>
 
       {/* System Tray */}
       <div className="system-tray">
