@@ -10,6 +10,7 @@ import ProjectsContent from './windows/ProjectsContent';
 import ContactContent from './windows/ContactContent';
 import FullProfileContent from './windows/FullProfileContent';
 import MinesweeperContent from './windows/MinesweeperContent';
+import { downloadProfile } from '../utils/downloadProfile';
 
 interface WindowState {
   id: IconType;
@@ -17,6 +18,7 @@ interface WindowState {
   position: { x: number; y: number };
   size: { width: number; height: number };
   isWordDocument?: boolean;
+  isMinimized?: boolean;
 }
 
 const desktopIcons: { id: IconType; label: string }[] = [
@@ -59,29 +61,37 @@ const Desktop: React.FC<DesktopProps> = ({ onLogOff }) => {
   const [windowOrder, setWindowOrder] = useState<IconType[]>([]);
 
   const openWindow = useCallback((id: IconType) => {
-    if (openWindows.find(w => w.id === id)) {
-      // Window already open, bring to front
-      setWindowOrder(prev => [...prev.filter(wId => wId !== id), id]);
-      return;
-    }
-
-    const config = windowConfigs[id];
-    const offset = openWindows.length * 30;
-    
-    setOpenWindows(prev => [...prev, { 
-      id, 
-      ...config,
-      position: { 
-        x: config.position.x + offset, 
-        y: config.position.y + offset 
+    setOpenWindows(prev => {
+      const existing = prev.find(w => w.id === id);
+      if (existing) {
+        // If minimized, restore it
+        if (existing.isMinimized) {
+          return prev.map(w => w.id === id ? { ...w, isMinimized: false } : w);
+        }
+        return prev;
       }
-    }]);
-    setWindowOrder(prev => [...prev, id]);
-  }, [openWindows]);
+
+      const config = windowConfigs[id];
+      const offset = prev.length * 30;
+      return [...prev, { 
+        id, 
+        ...config,
+        position: { 
+          x: config.position.x + offset, 
+          y: config.position.y + offset 
+        }
+      }];
+    });
+    setWindowOrder(prev => [...prev.filter(wId => wId !== id), id]);
+  }, []);
 
   const closeWindow = useCallback((id: IconType) => {
     setOpenWindows(prev => prev.filter(w => w.id !== id));
     setWindowOrder(prev => prev.filter(wId => wId !== id));
+  }, []);
+
+  const minimizeWindow = useCallback((id: IconType) => {
+    setOpenWindows(prev => prev.map(w => w.id === id ? { ...w, isMinimized: true } : w));
   }, []);
 
   const focusWindow = useCallback((id: IconType) => {
@@ -113,27 +123,50 @@ const Desktop: React.FC<DesktopProps> = ({ onLogOff }) => {
             onDoubleClick={() => openWindow(icon.id)}
           />
         ))}
+        {/* Download Profile Icon */}
+        <div
+          className="desktop-icon"
+          onClick={downloadProfile}
+        >
+          <div className="desktop-icon-image">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="6" y="2" width="20" height="28" rx="1" fill="#f5f3ea" stroke="#808080" strokeWidth="1"/>
+              <rect x="8" y="4" width="16" height="24" fill="white" stroke="#c0c0c0" strokeWidth="0.5"/>
+              <path d="M16 10 L16 22" stroke="#316ac5" strokeWidth="2"/>
+              <path d="M11 18 L16 23 L21 18" stroke="#316ac5" strokeWidth="2" fill="none"/>
+              <rect x="10" y="6" width="12" height="1.5" fill="#316ac5" rx="0.5"/>
+              <rect x="10" y="9" width="8" height="1" fill="#808080" rx="0.5"/>
+            </svg>
+          </div>
+          <span className="desktop-icon-label">Download_CV.pdf</span>
+        </div>
       </div>
 
       {/* Windows */}
-      {openWindows.map(window => (
+      {openWindows.map(win => (
         <Window
-          key={window.id}
-          id={window.id}
-          title={window.title}
-          onClose={() => closeWindow(window.id)}
-          onFocus={() => focusWindow(window.id)}
-          zIndex={100 + windowOrder.indexOf(window.id)}
-          initialPosition={window.position}
-          initialSize={window.size}
-          isWordDocument={window.isWordDocument}
+          key={win.id}
+          id={win.id}
+          title={win.title}
+          onClose={() => closeWindow(win.id)}
+          onFocus={() => focusWindow(win.id)}
+          onMinimize={() => minimizeWindow(win.id)}
+          zIndex={100 + windowOrder.indexOf(win.id)}
+          initialPosition={win.position}
+          initialSize={win.size}
+          isWordDocument={win.isWordDocument}
+          isMinimized={win.isMinimized}
         >
-          {getWindowContent(window.id)}
+          {getWindowContent(win.id)}
         </Window>
       ))}
 
       {/* Taskbar */}
-      <Taskbar onOpenWindow={(id) => openWindow(id as IconType)} onLogOff={onLogOff} />
+      <Taskbar 
+        onOpenWindow={(id) => openWindow(id as IconType)} 
+        onLogOff={onLogOff}
+        openWindows={openWindows.map(w => ({ id: w.id, title: w.title, isMinimized: w.isMinimized }))}
+      />
     </div>
   );
 };
